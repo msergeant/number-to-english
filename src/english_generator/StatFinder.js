@@ -11,7 +11,10 @@ const StatFinder = {
     };
   },
 
-  getEnglishString: (start, end) => {
+  getEnglishString: (startInput, endInput) => {
+    let start = parseInt(startInput);
+    let end = parseInt(endInput);
+
     return Array
       .from({length: end - start + 1}, (_, x) => x + start)
       .map(EnglishGenerator.generate)

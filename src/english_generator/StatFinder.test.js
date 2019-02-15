@@ -22,6 +22,10 @@ it('getEnglishString returns the full string of English conversions', () => {
   expect(StatFinder.getEnglishString(5, 10)).toEqual( "fivesixseveneightnineten" );
 });
 
+it('getEnglishString works with string inputs', () => {
+  expect(StatFinder.getEnglishString("1", "2")).toEqual( "onetwo" );
+});
+
 it('findAllStats returns the proper stats', () => {
   expect(StatFinder.findAllStats(1, 2, "o")).toEqual(
     {
