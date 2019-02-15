@@ -7,7 +7,9 @@ class App extends Component {
     super(props);
     this.state = {
       startInteger: 1,
+      startError: '',
       endInteger: 123,
+      endError: '',
       targetCharacter: "e",
       stats: null
     };
@@ -26,12 +28,39 @@ class App extends Component {
   _handleCalculateClick(e) {
     e.preventDefault();
     const nextState = {...this.state};
-    nextState.stats = StatFinder.findAllStats(
-      nextState.startInteger,
-      nextState.endInteger,
-      nextState.targetCharacter
-    );
+
+    if(!this._checkForErrors(nextState)) {
+      nextState.stats = StatFinder.findAllStats(
+        nextState.startInteger,
+        nextState.endInteger,
+        nextState.targetCharacter
+      );
+    }
     this.setState(nextState);
+  }
+
+  _checkForErrors(state) {
+    let errorsFound = false;
+    let startInt = parseInt(state.startInteger);
+    let endInt = parseInt(state.endInteger);
+    state.startError = '';
+    state.endError = '';
+
+    if(endInt < startInt) {
+      errorsFound = true;
+      state.endError = "Last number must be greater than or equal to First Number";
+    } else {
+      if(endInt > 999 || endInt < 1) {
+        errorsFound = true;
+        state.endError = "Last number must be between 1 and 999";
+      }
+      if(startInt > 999 || startInt < 1) {
+        errorsFound = true;
+        state.startError = "First number must be between 1 and 999";
+      }
+    }
+
+    return errorsFound;
   }
 
   render() {
@@ -48,22 +77,24 @@ class App extends Component {
           <div className="field">
             <label className="label" >First Number</label>
             <input
-              className="input"
+              className={"input" + (this.state.startError ? " inputError" : "")}
               type="number"
               name="startInteger"
               id="startInteger"
               value={this.state.startInteger}
               onChange={this._handleInputChange} />
+            { this.state.startError ? <span className="error">{ this.state.startError }</span> : '' }
           </div>
           <div className="field">
             <label className="label" >Last Number</label>
             <input
-              className="input"
+              className={"input" + (this.state.endError ? " inputError" : "")}
               type="number"
               name="endInteger"
               id="endInteger"
               value={this.state.endInteger}
               onChange={this._handleInputChange} />
+            { this.state.endError ? <span className="error">{ this.state.endError }</span> : '' }
           </div>
           <div className="field">
             <label className="label" >Target Letter</label>

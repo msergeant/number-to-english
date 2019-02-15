@@ -9,12 +9,12 @@ p {
 }
 
 .form {
-  max-width: 300px;
+  max-width: 350px;
 }
 
 .field {
   width: 100%;
-  height: 35px;
+  height: 45px;
 }
 
 .input {
@@ -36,4 +36,15 @@ p {
 
 .highlight {
   background-color: orange;
+}
+
+.error {
+  padding-top: 3px;
+  font-size: 12px;
+  display: block;
+  color: red;
+}
+
+.inputError {
+  border-color: red;
 }
