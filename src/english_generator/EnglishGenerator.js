@@ -30,27 +30,26 @@ const numbers = {
 
 const EnglishGenerator = {
   generate: (input) => {
-    if(input > 20) {
-      const ones = input % 10;
-      const tens = ( input % 100 ) - ones;
-      const hundreds = Math.floor(input / 100);
+    const ones = input % 10;
+    const tens = ( input % 100 ) - ones;
+    const hundreds = Math.floor(input / 100);
 
-      const output = [];
-      if(hundreds > 0) {
-        output.push(numbers[hundreds]);
-        output.push("hundred");
-      }
-      if(tens > 0) {
-        output.push(numbers[tens]);
-      }
+    const output = [];
+    if(hundreds > 0) {
+      output.push(numbers[hundreds]);
+      output.push("hundred");
+    }
+    if(tens >= 20) {
+      output.push(numbers[tens]);
+
       if(ones > 0) {
         output.push(numbers[ones]);
       }
-
-      return output.join("");
     } else {
-      return numbers[input];
+      output.push(numbers[ones + tens]);
     }
+
+    return output.join("");
   }
 };
 

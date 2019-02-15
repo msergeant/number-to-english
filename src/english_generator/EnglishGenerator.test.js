@@ -51,6 +51,7 @@ it('Converts numbers greater than 20', () => {
 
 it('Converts numbers greater than 100', () => {
   expect(EnglishGenerator.generate(101)).toEqual('onehundredone');
+  expect(EnglishGenerator.generate(115)).toEqual('onehundredfifteen');
   expect(EnglishGenerator.generate(123)).toEqual('onehundredtwentythree');
   expect(EnglishGenerator.generate(400)).toEqual('fourhundred');
   expect(EnglishGenerator.generate(299)).toEqual('twohundredninetynine');
