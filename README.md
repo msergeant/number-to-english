@@ -5,6 +5,8 @@ English equivalent. Then it reports on the length of the string and the
 probability that any one character is the character you're currently
 targeting.
 
+[Here is a published version](https://msergeant.github.io/number-to-english) if you want to see it in action.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
