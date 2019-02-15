@@ -2,6 +2,7 @@
   "name": "number-to-english",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://msergeant.github.io/number-to-english",
   "dependencies": {
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
